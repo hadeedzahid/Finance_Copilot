@@ -141,6 +141,8 @@ python main.py
 
 ```
 finance-copilot/
+├── .streamlit/
+│   └── config.toml               # Streamlit theme & configuration
 ├── agents/
 │   ├── ingestion_agent.py        # CSV loading & validation
 │   ├── categorization_agent.py   # Transaction classification
@@ -153,6 +155,44 @@ finance-copilot/
 ├── requirements.txt              # Python dependencies
 ├── .env.example                  # Environment variable template
 └── README.md
+```
+
+---
+
+## ☁️ Deploy to Streamlit Cloud
+
+You can deploy this app for free on [Streamlit Community Cloud](https://share.streamlit.io):
+
+### 1. Push your code to GitHub
+Make sure your latest code is pushed to your GitHub repository:
+```bash
+git add .
+git commit -m "ready for deployment"
+git push
+```
+
+### 2. Go to Streamlit Cloud
+Visit [share.streamlit.io](https://share.streamlit.io) and sign in with your GitHub account.
+
+### 3. Connect your repository
+- Click **"New app"**
+- Select your GitHub repo: `hadeedzahid/finance-copilot`
+- Set the **Main file path** to: `app.py`
+- Set the **Branch** to: `main`
+
+### 4. Add your API key as a secret
+In the Streamlit Cloud dashboard:
+- Click **"Advanced settings"** before deploying
+- In the **Secrets** section, add:
+```toml
+GROQ_API_KEY = "your_groq_api_key_here"
+```
+> This securely injects the key as an environment variable — no need for a `.env` file in production.
+
+### 5. Click Deploy! 🚀
+Streamlit Cloud will install dependencies from `requirements.txt` and launch your app. Your live URL will look like:
+```
+https://hadeedzahid-finance-copilot.streamlit.app
 ```
 
 ---
